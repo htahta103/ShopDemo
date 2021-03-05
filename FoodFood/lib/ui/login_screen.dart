@@ -1,3 +1,4 @@
+import 'package:FoodFood/core/viewmodel/interfaces/ilogin_screen_viewmodel.dart';
 import 'package:FoodFood/ui/common_widgets/custom_button.dart';
 import 'package:FoodFood/ui/common_widgets/custom_textfield.dart';
 import 'package:FoodFood/ui/style/text_style.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -17,6 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final FocusNode _nodePassword = FocusNode();
 
   bool _hidePassword = true;
+  ILoginScreenViewmodel _loginViewmodel;
+
+  @override
+  void initState() {
+    super.initState();
+    _loginViewmodel =
+        Provider.of<ILoginScreenViewmodel>(context, listen: false);
+  }
 
   KeyboardActionsConfig _keyboardActionsConfig(BuildContext context) {
     return KeyboardActionsConfig(
@@ -84,7 +94,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 CustomButton(
                   option: CustomButtonOption(
-                    onTap: () {},
+                    onTap: () async {
+                      await _loginViewmodel.onEmailSignIn(
+                          context, 'htahta103@gmail.com', '1122330');
+                    },
                     content: Text(
                       'SignIn with Account',
                       style: TextStyle(fontSize: 15),
@@ -96,7 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 CustomButton(
                   option: CustomButtonOption(
-                    onTap: () {},
+                    onTap: () async {
+                      await _loginViewmodel.onGoogleSignIn(context);
+                    },
                     content: Text(
                       'SignIn with Google',
                       style: TextStyle(fontSize: 15),
