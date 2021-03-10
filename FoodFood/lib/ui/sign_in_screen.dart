@@ -8,12 +8,12 @@ import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final FocusNode _nodeUsername = FocusNode();
 
   final FocusNode _nodePassword = FocusNode();

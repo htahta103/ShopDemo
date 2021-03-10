@@ -1,7 +1,10 @@
 import 'package:FoodFood/core/viewmodel/providers.dart';
 import 'package:FoodFood/global/locator.dart';
-import 'package:FoodFood/ui/login_screen.dart';
+import 'package:FoodFood/ui/app_router.dart';
+import 'package:FoodFood/ui/sign_in_screen.dart';
+import 'package:FoodFood/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,15 +18,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [...viewmodelProviders],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: LoginScreen(),
+        onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
+        initialRoute: AppRouter.splash,
       ),
     );
   }
 }
-
