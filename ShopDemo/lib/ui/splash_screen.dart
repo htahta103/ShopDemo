@@ -1,4 +1,5 @@
 import 'package:ShopDemo/ui/app_router.dart';
+import 'package:ShopDemo/utils/dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     //Set 2s to check, sync or setup something in real app
    Future.delayed(Duration(milliseconds: 2000),(){Get.offAllNamed(AppRouter.signIn);});
   }
+  
   @override
   Widget build(BuildContext context) {
     return Container(

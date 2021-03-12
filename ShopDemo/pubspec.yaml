@@ -28,18 +28,18 @@ dependencies:
   get: ^3.25.6
   provider: ^4.3.3
   get_it: ^5.0.6
-
+  flutter_local_notifications: ^4.0.1+2
 
   #UI
   font_awesome_flutter: ^8.11.0
   google_fonts: ^1.0.0
-  
+  giffy_dialog: ^1.8.0
 
   #Firebase
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.1
   firebase_messaging: ^6.0.0
-  firebase_chat: ^0.0.3
+  # firebase_chat: ^0.0.3
   firebase_storage: ^7.0.0
 
   google_sign_in: ^4.5.3
