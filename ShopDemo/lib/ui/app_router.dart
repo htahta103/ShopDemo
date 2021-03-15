@@ -1,5 +1,6 @@
 import 'package:ShopDemo/ui/boarding_screen/boarding_screen.dart';
 import 'package:ShopDemo/ui/sign_in_screen.dart';
+import 'package:ShopDemo/ui/sign_up_screen.dart/sign_up_screen.dart';
 import 'package:ShopDemo/ui/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class AppRouter {
   static const String splash = '/splash';
   static const String boarding = '/boarding';
   static const String signIn = '/signIn';
+  static const String signUp = '/signUp';
 
   static PageRouteBuilder _pageRouteBuilder(
       RouteSettings settings, Widget widget) {
@@ -33,6 +35,11 @@ class AppRouter {
         return _pageRouteBuilder(
           settings,
           BoardingScreen(),
+        );
+      case signUp:
+        return _pageRouteBuilder(
+          settings,
+          SignupScreen(),
         );
     }
   }

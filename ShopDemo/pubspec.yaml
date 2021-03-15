@@ -35,6 +35,7 @@ dependencies:
   google_fonts: ^1.0.0
   giffy_dialog: ^1.8.0
   carousel_slider: ^3.0.0
+  direct_select_flutter: ^1.0.0
 
   #Firebase
   firebase_core: ^0.7.0
