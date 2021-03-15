@@ -11,9 +11,10 @@ class CustomButton extends StatelessWidget {
     return InkWell(
       onTap: option.onTap,
       child: Container(
-        height: 48,
+        height: option.height,
+        width: option.width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(option.borderRadius),
           color: option.color != null ? option.color : Colors.yellow,
         ),
         //TODO isAvailable,
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
             Center(child: option.content),
             option.suffixIcon != null
                 ? Container(
-                  padding: EdgeInsets.only(right: 30),
+                    padding: EdgeInsets.only(right: 30),
                     alignment: Alignment.centerRight,
                     child: FaIcon(option.suffixIcon))
                 : SizedBox(),
@@ -46,10 +47,16 @@ class CustomButtonOption {
   final Function onTap;
   final IconData prefixIcon;
   final IconData suffixIcon;
+  final double borderRadius;
+  final double width;
+  final double height;
   CustomButtonOption(
       {this.color,
       @required this.onTap,
       @required this.content,
       this.prefixIcon,
-      this.suffixIcon});
+      this.suffixIcon,
+      this.borderRadius = 10,
+      this.width = 335,
+      this.height = 44});
 }
