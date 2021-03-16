@@ -1,9 +1,14 @@
 import 'package:ShopDemo/global/const.dart';
+import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
+import 'package:ShopDemo/ui/common_widgets/custom_checkbox.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_dropdown_formfield.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:circular_check_box/circular_check_box.dart';
 
 part 'date_of_birth_widget.dart';
+part 'mostly_interested_widget.dart';
+part 'contact_prefested_widget.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key key}) : super(key: key);
@@ -31,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
         title: Text(
           'Sign up',
           style: TextStyle(
-            fontFamily: fontFamily,
+            fontFamily: defaultFont,
             fontSize: 20,
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -66,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 "We'll send your order confirmation here",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontFamily: fontFamily,
+                  fontFamily: defaultFont,
                   fontSize: 12,
                   color: Color.fromRGBO(157, 158, 163, 1),
                 ),
@@ -102,6 +107,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               CustomTextFormField(
                 option: TextFieldOption(
+                  obscureText: true,
                   label: 'Password',
                   onChanged: (String value) {},
                   placeHolder: 'Enter password',
@@ -110,17 +116,40 @@ class _SignupScreenState extends State<SignupScreen> {
                   // validator: ,
                 ),
               ),
-              SizedBox(height:10),
+              SizedBox(height: 10),
               Text(
                 "Must be 10 or more characters",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontFamily: fontFamily,
+                  fontFamily: defaultFont,
                   fontSize: 12,
                   color: Color.fromRGBO(157, 158, 163, 1),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               _buildDateOfBirth(),
+              MostInterested(),
+              ContactPrefested(),
+              SizedBox(
+                height: 100,
+              ),
+              CustomButton(
+                option: CustomButtonOption(
+                    content: Text(
+                      'Sign up',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontFamily: defaultFont,
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Color.fromRGBO(143, 95, 67, 1),
+                    onTap: () {}),
+              ),
+              SizedBox(height: 10,),
             ],
           ),
         ),

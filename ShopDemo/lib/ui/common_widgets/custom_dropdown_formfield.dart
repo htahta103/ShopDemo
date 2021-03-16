@@ -1,6 +1,8 @@
-import 'package:direct_select_flutter/direct_select_list.dart';
+import 'package:ShopDemo/global/const.dart';
+import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:direct_select_flutter/direct_select_item.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 
 class CustomDropdown extends StatefulWidget {
   @override
@@ -9,47 +11,56 @@ class CustomDropdown extends StatefulWidget {
 
 class _CustomDropdownState extends State<CustomDropdown> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-     var _checkData = [
-    "Food",
-    "Transport",
-    "Personal",
-    "Shopping",
-    "Medical",
-    "Rent",
-    "Movie",
-    "Salary"
-  ];
-   var check =DirectSelectList<String>(
-        values: _checkData,
-        defaultItemIndex: 3,
-        itemBuilder: (String value) => getDropDownMenuItem(value),
-        focusedItemDecoration: _getDslDecoration(),
-        onItemSelectedListener: (item, index, context) {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text(item)));
-        });
   }
 
-     _getDslDecoration() {
-    return BoxDecoration(
-      border: BorderDirectional(
-        bottom: BorderSide(width: 1, color: Colors.black12),
-        top: BorderSide(width: 1, color: Colors.black12),
+  DateTime _date;
+  @override
+  Widget build(BuildContext context) {
+    var currentDate = _date != null ? DateFormat('yyyy-MM-dd').format(_date) : 'dd/mm/YYYY';
+    var check = currentDate.compareTo('dd/mm/YYYY');
+
+
+    return CustomButton(
+      option: CustomButtonOption(
+        borderRadius: 5,
+        color: Colors.white,
+        borderColor: Color.fromRGBO(157, 158, 163, 1),
+        isCenterContent: false,
+        suffixIcon: Icons.keyboard_arrow_down,
+        content: Container(
+          child: Text(
+            currentDate,
+            style: TextStyle(
+              fontFamily: defaultFont,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              color: check != 0
+                  ? Color.fromRGBO(100, 100, 100, 1)
+                  : Color.fromRGBO(201, 201, 201, 1),
+            ),
+          ),
+        ),
+        onTap: () {
+          DatePicker.showDatePicker(context,
+              showTitleActions: true,
+              minTime: DateTime(1900, 1, 1),
+              maxTime: DateTime(2020, 1, 1), onChanged: (date) {
+            //TODO
+            _date = date;
+            print('change $date');
+            setState(() {});
+          }, onConfirm: (date) {
+            _date = date;
+            //Todo
+            print('confirm $date');
+            setState(() {});
+          }, currentTime: DateTime.now(), locale: LocaleType.vi);
+        },
       ),
     );
   }
-    DirectSelectItem<String> getDropDownMenuItem(String value) {
-    return DirectSelectItem<String>(
-        itemHeight: 56,
-        value: value,
-        itemBuilder: (context, value) {
-          return Text(value);
-        });
-  }
- 
-  Widget build(BuildContext context) {
-    return Container(child: check);
   // @override
   // Widget build(BuildContext context) {
   //   var _currentSelectedValue;

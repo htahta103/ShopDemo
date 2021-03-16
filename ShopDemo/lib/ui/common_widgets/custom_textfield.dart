@@ -186,7 +186,7 @@ class CustomTextFormField extends StatelessWidget {
                 TextSpan(
                   text: option.label,
                   style: TextStyle(
-                    fontFamily: fontFamily,
+                    fontFamily: defaultFont,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                     color: Color.fromRGBO(100, 100, 100, 1),
@@ -196,7 +196,7 @@ class CustomTextFormField extends StatelessWidget {
                     ? TextSpan(
                         text: '*',
                         style: TextStyle(
-                            fontFamily: fontFamily,
+                            fontFamily: defaultFont,
                             fontWeight: FontWeight.w800,
                             fontSize: 14,
                             color: Colors.red),
@@ -210,6 +210,7 @@ class CustomTextFormField extends StatelessWidget {
           ),
           Container(
             child: TextFormField(
+              obscureText: option.obscureText,
               textAlign: TextAlign.start,
               onChanged: option.onChanged,
               decoration: InputDecoration(
@@ -249,7 +250,7 @@ class CustomTextFormField extends StatelessWidget {
                 // ),
                 hintText: option.placeHolder,
                 hintStyle: TextStyle(
-                  fontFamily: fontFamily,
+                  fontFamily: defaultFont,
                   fontWeight: FontWeight.w600,
                   color: Color.fromRGBO(201, 201, 201, 1),
                   fontSize: 16,

@@ -9,13 +9,18 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: option.onTap,
+      onTap: option.isEnable ? option.onTap : null,
       child: Container(
         height: option.height,
         width: option.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(option.borderRadius),
-          color: option.color != null ? option.color : Colors.yellow,
+          color: option.isEnable
+              ? (option.color != null ? option.color : Colors.yellow)
+              : Color.fromRGBO(173, 173, 173, 1),
+          border: Border.all(
+            color: option.borderColor,
+          ),
         ),
         //TODO isAvailable,
         child: Stack(
@@ -27,7 +32,14 @@ class CustomButton extends StatelessWidget {
                     child: FaIcon(option.prefixIcon),
                   )
                 : SizedBox(),
-            Center(child: option.content),
+            option.isCenterContent
+                ? Center(
+                    child: option.content,
+                  )
+                : Container(
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    alignment: Alignment.centerLeft,
+                    child: option.content),
             option.suffixIcon != null
                 ? Container(
                     padding: EdgeInsets.only(right: 30),
@@ -50,13 +62,20 @@ class CustomButtonOption {
   final double borderRadius;
   final double width;
   final double height;
-  CustomButtonOption(
-      {this.color,
-      @required this.onTap,
-      @required this.content,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.borderRadius = 10,
-      this.width = 335,
-      this.height = 44});
+  final Color borderColor;
+  final bool isCenterContent;
+  final isEnable;
+  CustomButtonOption({
+    this.color,
+    @required this.onTap,
+    @required this.content,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.borderRadius = 5,
+    this.width = 335,
+    this.height = 44,
+    this.borderColor = Colors.transparent,
+    this.isCenterContent = true,
+    this.isEnable = true,
+  });
 }
