@@ -87,6 +87,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
             ),
             CustomButton(
               option: CustomButtonOption(
+                onTap: (){},
                 color: Color.fromRGBO(143, 95, 67, 1),
                 content: Text(
                   'Get Started!',

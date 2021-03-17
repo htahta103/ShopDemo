@@ -1,4 +1,5 @@
 import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_viewmodel.dart';
+import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
 import 'package:ShopDemo/ui/style/text_style.dart';
@@ -47,81 +48,173 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_sharp,
+            color: Color.fromRGBO(157, 158, 163, 1),
+          ),
+          onPressed: () {},
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.white,
       body: KeyboardActions(
         config: _keyboardActionsConfig(context),
-        child: Center(
-          child: Container(
-            width: 300,
-            height: MediaQuery.of(context).size.height - 50,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 100,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Sign in',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 30,
                 ),
-                Center(
-                  child: Text(
-                    'ShopDemo',
-                    style: DefaultTextStyleApp(
-                      FontOption(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Text(
+                'Email',
+                style: TextStyle(
+                  fontFamily: defaultFont,
+                ),
+              ),
+              CustomTextFormField(
+                option: TextFieldOption(),
+              ),
+              SizedBox(
+                height: 14,
+              ),
+              Text(
+                'Password',
+                style: TextStyle(
+                  fontFamily: defaultFont,
+                ),
+              ),
+              CustomTextFormField(
+                option: TextFieldOption(),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              CustomButton(
+                option: CustomButtonOption(
+                  haveGradient: true,
+                  onTap: () async {
+                    await _loginViewmodel.onEmailSignIn(
+                        context, 'htahta103@gmail.com', '1122330');
+                  },
+                  content: Text(
+                    'Sign in',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontFamily: defaultFont,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Don't have an account?",
+                    style: defaultStyle,
+                  ),
+                  TextButton(
+                    child: Text(
+                      'Sign Up',
+                      style: defaultStyle,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Center(
+                child: Text(
+                  'Or Sign In with',
+                  style: TextStyle(fontFamily: defaultFont, fontSize: 12, fontWeight: FontWeight.w600),
+                ),
+              ),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FlatButton(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey[400],
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/google_icon.png',
+                            height: 30,
+                            width: 30,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Google',
+                            style: defaultStyleBold,
+                          )
+                        ],
                       ),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                FaIcon(
-                  FontAwesomeIcons.cannabis,
-                  size: 100,
-                  color: Colors.green,
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                CustomTextField(
-                  isUserNameField: true,
-                ),
-                SizedBox(
-                  height: 14,
-                ),
-                CustomTextField(
-                  isUserNameField: false,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomButton(
-                  option: CustomButtonOption(
-                    onTap: () async {
-                      await _loginViewmodel.onEmailSignIn(
-                          context, 'htahta103@gmail.com', '1122330');
-                    },
-                    content: Text(
-                      'SignIn with Account',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                CustomButton(
-                  option: CustomButtonOption(
-                    onTap: () async {
+                    onPressed: () async {
                       await _loginViewmodel.onGoogleSignIn(context);
                     },
-                    content: Text(
-                      'SignIn with Google',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    prefixIcon: FontAwesomeIcons.google,
-                    color: Colors.lightBlue,
                   ),
-                ),
-              ],
-            ),
+                  FlatButton(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey[400],
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/facebook_icon.png',
+                            fit: BoxFit.scaleDown,
+                            height: 30,
+                            width: 30,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Facebook', style: defaultStyleBold),
+                        ],
+                      ),
+                    ),
+                    onPressed: () async {
+                      // await _loginViewmodel.onGoogleSignIn(context);
+                      //TODO
+                    },
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

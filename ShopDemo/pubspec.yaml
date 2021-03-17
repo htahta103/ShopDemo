@@ -74,6 +74,11 @@ flutter:
         - asset: assets/fonts/SourceSansPro-Black.ttf
         - asset: assets/fonts/SourceSansPro-BlackItalic.ttf
         - asset: assets/fonts/SourceSansPro-Light.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+        - asset: assets/fonts/Roboto-BlackItalic.ttf
+        - asset: assets/fonts/Roboto-Light.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

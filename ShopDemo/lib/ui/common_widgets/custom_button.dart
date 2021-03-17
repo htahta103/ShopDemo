@@ -21,6 +21,10 @@ class CustomButton extends StatelessWidget {
           border: Border.all(
             color: option.borderColor,
           ),
+          gradient: option.haveGradient ? LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [Color.fromRGBO(102,126,234,1), Color.fromRGBO(100,182,255,1)]): null,
         ),
         //TODO isAvailable,
         child: Stack(
@@ -44,7 +48,7 @@ class CustomButton extends StatelessWidget {
                 ? Container(
                     padding: EdgeInsets.only(right: 30),
                     alignment: Alignment.centerRight,
-                    child: FaIcon(option.suffixIcon))
+                    child: FaIcon(option.suffixIcon),)
                 : SizedBox(),
           ],
         ),
@@ -65,6 +69,7 @@ class CustomButtonOption {
   final Color borderColor;
   final bool isCenterContent;
   final isEnable;
+  final bool haveGradient;
   CustomButtonOption({
     this.color,
     @required this.onTap,
@@ -77,5 +82,6 @@ class CustomButtonOption {
     this.borderColor = Colors.transparent,
     this.isCenterContent = true,
     this.isEnable = true,
+    this.haveGradient = false,
   });
 }

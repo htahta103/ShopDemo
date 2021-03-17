@@ -165,7 +165,7 @@ class TextFieldOption {
     this.enabled = true,
     this.suffixIcon,
     this.isRequired = true,
-    @required this.label,
+    this.label,
   });
 }
 
@@ -180,31 +180,33 @@ class CustomTextFormField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: option.label,
-                  style: TextStyle(
-                    fontFamily: defaultFont,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: Color.fromRGBO(100, 100, 100, 1),
-                  ),
-                ),
-                option.isRequired
-                    ? TextSpan(
-                        text: '*',
+          option.label != null
+              ? RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: option.label,
                         style: TextStyle(
-                            fontFamily: defaultFont,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14,
-                            color: Colors.red),
-                      )
-                    : SizedBox(),
-              ],
-            ),
-          ),
+                          fontFamily: defaultFont,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: Color.fromRGBO(100, 100, 100, 1),
+                        ),
+                      ),
+                      option.isRequired
+                          ? TextSpan(
+                              text: '*',
+                              style: TextStyle(
+                                  fontFamily: defaultFont,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14,
+                                  color: Colors.red),
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                )
+              : SizedBox(),
           SizedBox(
             height: 5,
           ),
