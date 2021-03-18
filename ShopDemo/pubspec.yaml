@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^1.0.0
   giffy_dialog: ^1.8.0
   carousel_slider: ^3.0.0
+  bubbled_navigation_bar: ^0.0.4
+  animate_do: 1.7.5
 
   #Firebase
   firebase_core: ^0.7.0

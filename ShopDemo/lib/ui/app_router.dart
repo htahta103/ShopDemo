@@ -1,4 +1,10 @@
 import 'package:ShopDemo/ui/boarding_screen/boarding_screen.dart';
+import 'package:ShopDemo/ui/common_widgets/main_screen.dart/main_screen.dart';
+import 'package:ShopDemo/ui/folder_screen/folder_screen.dart';
+import 'package:ShopDemo/ui/home_screen/home_screen.dart';
+import 'package:ShopDemo/ui/info_screen/info_screen.dart';
+import 'package:ShopDemo/ui/liked_screen/liked_screen.dart';
+import 'package:ShopDemo/ui/search_screen/search_screen.dart';
 import 'package:ShopDemo/ui/sign_in_screen.dart';
 import 'package:ShopDemo/ui/sign_up_screen.dart/sign_up_screen.dart';
 import 'package:ShopDemo/ui/splash_screen.dart';
@@ -9,6 +15,12 @@ class AppRouter {
   static const String boarding = '/boarding';
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
+  static const String home = '/home';
+  static const String mainPage = '/main';
+  static const String folder = '/folder';
+  static const String search = '/search';
+  static const String liked = '/liked';
+  static const String info = '/info';
 
   static PageRouteBuilder _pageRouteBuilder(
       RouteSettings settings, Widget widget) {
@@ -40,6 +52,36 @@ class AppRouter {
         return _pageRouteBuilder(
           settings,
           SignupScreen(),
+        );
+      case home:
+        return _pageRouteBuilder(
+          settings,
+          HomeScreen(),
+        );
+      case mainPage:
+        return _pageRouteBuilder(
+          settings,
+          MainScreen(),
+        );
+      case folder:
+        return _pageRouteBuilder(
+          settings,
+          FolderScreen(),
+        );
+      case search:
+        return _pageRouteBuilder(
+          settings,
+          SearchScreen(),
+        );
+      case liked:
+        return _pageRouteBuilder(
+          settings,
+          LikedScreen(),
+        );
+      case info:
+        return _pageRouteBuilder(
+          settings,
+          InfoScreen(),
         );
     }
   }

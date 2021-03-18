@@ -77,7 +77,7 @@ class CustomButtonOption {
     this.prefixIcon,
     this.suffixIcon,
     this.borderRadius = 5,
-    this.width = 335,
+    this.width,
     this.height = 44,
     this.borderColor = Colors.transparent,
     this.isCenterContent = true,

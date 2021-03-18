@@ -1,9 +1,11 @@
 import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_viewmodel.dart';
 import 'package:ShopDemo/global/global_data.dart';
 import 'package:ShopDemo/global/locator.dart';
+import 'package:ShopDemo/ui/app_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreenViewmodel extends ChangeNotifier
@@ -11,6 +13,8 @@ class LoginScreenViewmodel extends ChangeNotifier
   GoogleSignIn _googleSignIn = GoogleSignIn();
   FirebaseAuth _auth;
   bool isUserSignIn = false;
+  User user;
+
 
   LoginScreenViewmodel() {
     Firebase.initializeApp().then((FirebaseApp defaultApp) {
@@ -23,8 +27,6 @@ class LoginScreenViewmodel extends ChangeNotifier
   void _checkIfUserLogin() {}
 
   Future<User> _handleSignIn() async {
-    User user;
-
     bool userSignIn = await _googleSignIn.isSignedIn();
 
     isUserSignIn = userSignIn;
@@ -55,6 +57,7 @@ class LoginScreenViewmodel extends ChangeNotifier
 
   Future<void> onGoogleSignIn(BuildContext context) async {
     User user = await _handleSignIn();
+    onSignInSuccess();
     //TODO Navigate to some page
     // var userSignedIn = Navigator.push(
     //   context,
@@ -67,10 +70,14 @@ class LoginScreenViewmodel extends ChangeNotifier
 
   @override
   Future<void> onEmailSignIn(BuildContext context, String email, String password) async {
-    User user;
     user = (await _auth.signInWithEmailAndPassword(email: email, password: password)).user;
     final User currentUser = await _auth.currentUser;
     if(user.uid == currentUser.uid)
-    print('thanh cong nha :3');
+      onSignInSuccess();
+  }
+
+  void onSignInSuccess(){
+if(user != null)
+    Get.offAllNamed(AppRouter.home);
   }
 }

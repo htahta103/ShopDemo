@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.41.2"
+  animate_do:
+    dependency: "direct main"
+    description:
+      name: animate_do
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.7.5"
   args:
     dependency: transitive
     description:
@@ -36,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.1"
+  bubbled_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: bubbled_navigation_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   build:
     dependency: transitive
     description:

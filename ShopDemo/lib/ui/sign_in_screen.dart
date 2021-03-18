@@ -146,10 +146,15 @@ class _SignInScreenState extends State<SignInScreen> {
               Center(
                 child: Text(
                   'Or Sign In with',
-                  style: TextStyle(fontFamily: defaultFont, fontSize: 12, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                      fontFamily: defaultFont,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
