@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 String defaultFont = 'Roboto';
-TextStyle defaultStyle = TextStyle(fontFamily: defaultFont,);
-TextStyle defaultStyleBold = TextStyle(fontFamily: defaultFont, fontWeight: FontWeight.w600);
-
+TextStyle defaultStyle = TextStyle();
+TextStyle defaultStyleBold = TextStyle( fontWeight: FontWeight.w600);
+var numberFormatter = new NumberFormat("#,###");
 class Pages{
   static String home = 'home';
   static String folder = 'folder';

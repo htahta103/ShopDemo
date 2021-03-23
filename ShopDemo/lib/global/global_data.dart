@@ -4,4 +4,7 @@ class GlobalData{
   String currentUserId;
   FirebaseAuth auth;
   String fontFamily = 'SourceSansPro';
+
+  //demo 
+  DateTime expiredDate;
 }

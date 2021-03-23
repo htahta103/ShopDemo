@@ -1,4 +1,5 @@
 import 'package:ShopDemo/core/viewmodel/providers.dart';
+import 'package:ShopDemo/global/global_data.dart';
 import 'package:ShopDemo/global/locator.dart';
 import 'package:ShopDemo/startups/init_firebase_messaging.dart';
 import 'package:ShopDemo/startups/init_flutter_locali_notification.dart';
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initStartup();
-    
+    locator<GlobalData>().expiredDate = DateTime.now().add(const Duration(minutes: 30));
   }
 
   Future<void> initStartup() async {
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-        initialRoute: AppRouter.splash,
+        initialRoute: AppRouter.home,
       ),
     );
   }
