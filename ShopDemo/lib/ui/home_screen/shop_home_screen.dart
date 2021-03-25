@@ -16,29 +16,32 @@ class ShopHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      controller: _listviewController,
-      children: [
-        Freeship(),
-        Container(
-          height: 200,
-        ),
-        FlashSaleWidget(),
-        Container(
-          height: 100,
-          color: Colors.blue,
-        ),
-        AutoScrollTag(
-          controller: _listviewController,
-          child: MenuItem(autoScroll: scrollToIndex),
-          index: 0,
-          key: ValueKey(0),
-        ),
-        Container(
-          height: 1000,
-          color: Colors.blue,
-        ),
-      ],
+    return Container(
+      color: Color.fromRGBO(240, 240, 240,1),
+      child: ListView(
+        controller: _listviewController,
+        children: [
+          Freeship(),
+          Container(
+            height: 200,
+          ),
+          FlashSaleWidget(),
+          Container(
+            height: 100,
+            color: Colors.blue,
+          ),
+          AutoScrollTag(
+            controller: _listviewController,
+            child:  MenuItem(autoScroll: scrollToIndex,),
+            index: 0,
+            key: ValueKey(0),
+          ),
+          Container(
+            height: 1000,
+            color: Colors.white,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:ShopDemo/core/viewmodel/common_widget_viewmodel/interfaces/iTabbar2_header_viewmodel.dart';
+import 'package:ShopDemo/core/viewmodel/common_widget_viewmodel/interfaces/itabbar2_header_viewmodel.dart';
 import 'package:ShopDemo/global/const.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +7,6 @@ import 'tabbar2_page_controller.dart';
 
 class Tabbar2Header extends StatefulWidget {
   final PageController controller;
-  final List<Tab> tabs;
   final Color indicatorColor;
   final Color backgroundColor;
   final Color foregroundColor;
@@ -18,7 +17,6 @@ class Tabbar2Header extends StatefulWidget {
   const Tabbar2Header({
     Key key,
     @required this.controller,
-    @required this.tabs,
     this.backgroundColor,
     this.indicatorColor,
     this.foregroundColor,
@@ -34,11 +32,16 @@ class Tabbar2Header extends StatefulWidget {
 class _Tabbar2HeaderState extends State<Tabbar2Header> {
   ITabbar2HeaderViewmodel _viewmodel;
   AutoScrollController _listviewController;
+  List<Tab> tabs = [];
   @override
   void initState() {
     _viewmodel = Provider.of<ITabbar2HeaderViewmodel>(context, listen: false);
     _listviewController = AutoScrollController();
     _viewmodel.function = _scrollToIndex;
+    tabs.clear();
+    tabs.addAll(_viewmodel.tabs.map((index) {
+      return Tab(text: index.toString());
+    }).toList());
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) => _viewmodel.init());
   }
@@ -64,8 +67,8 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
                 return ListView(
                   controller: _listviewController,
                   scrollDirection: Axis.horizontal,
-                  children: widget.tabs.map((item) {
-                    var index = widget.tabs.indexOf(item);
+                  children: tabs.map((item) {
+                    var index = tabs.indexOf(item);
                     return AutoScrollTag(
                       index: index,
                       controller: _listviewController,
@@ -93,12 +96,12 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
                           _viewmodel.onPageChange(index);
                           if (widget.controller.isInitialized)
                             widget.controller.animateToPage(
-                              widget.tabs.indexOf(item),
+                              tabs.indexOf(item),
                               // tabs.indexWhere((tab) => tab.text == item.text),
                               curve: Curves.easeInOut,
                               duration: Duration(milliseconds: 200),
                             );
-                            widget.loadingAndScroll();
+                          widget.loadingAndScroll();
                         },
                       ),
                     );

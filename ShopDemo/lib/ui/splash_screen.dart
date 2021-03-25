@@ -1,5 +1,4 @@
 import 'package:ShopDemo/ui/app_router.dart';
-import 'package:ShopDemo/utils/dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
