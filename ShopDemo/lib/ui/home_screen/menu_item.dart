@@ -1,4 +1,5 @@
 import 'package:ShopDemo/core/viewmodel/common_widget_viewmodel/interfaces/itabbar2_header_viewmodel.dart';
+import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/common_widgets/tabbar_widget_with_sticky_header.dart/custom_tabbar2.dart';
 import 'package:ShopDemo/ui/common_widgets/tabbar_widget_with_sticky_header.dart/tabbar2_content.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,18 +26,68 @@ class MenuItem extends StatelessWidget {
 }
 
 Widget stickyHeader(PageController controller, Function loadingAndScroll) {
-  return StickyHeader(
-    header: Container(
-      height: 40.0,
-      color: Colors.blueGrey[700],
-      alignment: Alignment.centerLeft,
-      child: Tabbar2Header(
-        loadingAndScroll: loadingAndScroll,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black54,
-        controller: controller,
+  return Column(
+    children: [
+      StickyHeader(
+        header: Container(
+          height: 40.0,
+          color: Colors.blueGrey[700],
+          alignment: Alignment.centerLeft,
+          child: Tabbar2Header(
+            loadingAndScroll: loadingAndScroll,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black54,
+            controller: controller,
+          ),
+        ),
+        content: MenuItemTabContent(),
+      ),
+      SizedBox(
+        height: 50,
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Text(
+              "Policy",
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+          buildInfoBtn(),
+          buildInfoBtn(),
+          buildInfoBtn(),
+          buildInfoBtn(),
+          buildInfoBtn(),
+          buildInfoBtn(),
+          SizedBox(height: 30,)
+        ],
+      ),
+    ],
+  );
+}
+
+Widget buildInfoBtn() {
+  return InkWell(
+    onTap: () {
+      //TODO
+    },
+    child: Container(
+      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Shipping information',
+            style: defaultStyleBold,
+          ),
+          Icon(
+            CupertinoIcons.right_chevron,
+            size: 16,
+          ),
+        ],
       ),
     ),
-    content: MenuItemTabContent()
-    );
+  );
 }

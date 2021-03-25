@@ -1,3 +1,4 @@
+import 'package:ShopDemo/ui/buy_by_type_screen/buy_by_type.dart';
 import 'package:ShopDemo/ui/home_screen/common_widgets/flash_sale_widget.dart';
 import 'package:ShopDemo/ui/home_screen/menu_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +18,6 @@ class ShopHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(240, 240, 240,1),
       child: ListView(
         controller: _listviewController,
         children: [
@@ -26,6 +26,7 @@ class ShopHomeScreen extends StatelessWidget {
             height: 200,
           ),
           FlashSaleWidget(),
+          BuyByType(),
           Container(
             height: 100,
             color: Colors.blue,
@@ -35,10 +36,6 @@ class ShopHomeScreen extends StatelessWidget {
             child:  MenuItem(autoScroll: scrollToIndex,),
             index: 0,
             key: ValueKey(0),
-          ),
-          Container(
-            height: 1000,
-            color: Colors.white,
           ),
         ],
       ),

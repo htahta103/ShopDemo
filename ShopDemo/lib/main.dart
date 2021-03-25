@@ -4,10 +4,8 @@ import 'package:ShopDemo/global/locator.dart';
 import 'package:ShopDemo/startups/init_firebase_messaging.dart';
 import 'package:ShopDemo/startups/init_flutter_locali_notification.dart';
 import 'package:ShopDemo/ui/app_router.dart';
-import 'package:ShopDemo/utils/dialog_utils.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 

@@ -112,7 +112,7 @@ class Tabbar2HeaderViewmodel extends ChangeNotifier
       _currentPage++;
       if (currentPage < pageNumber)
         showItems.addAll(
-            items.getRange(9 * (currentPage - 1), 9 * (currentPage - 1) + 9));
+            items.getRange(9 * (currentPage - 1), 9*currentPage));
       else if (currentPage == pageNumber)
         showItems.addAll(items.getRange(9 * (currentPage - 1), items.length));
       _moreLoading = false;
