@@ -55,31 +55,31 @@ Widget stickyHeader(PageController controller, Function loadingAndScroll) {
               style: TextStyle(fontWeight: FontWeight.w700),
             ),
           ),
-          buildInfoBtn(),
-          buildInfoBtn(),
-          buildInfoBtn(),
-          buildInfoBtn(),
-          buildInfoBtn(),
-          buildInfoBtn(),
-          SizedBox(height: 30,)
+          buildInfoBtn('Shipping information'),
+          buildInfoBtn('Payment on delivery'),
+          buildInfoBtn('Refund in 30 days'),
+          buildInfoBtn('Payment instructions'),
+          buildInfoBtn('Privacy Policy'),
+          buildInfoBtn('Terms and condition'),
+          SizedBox(height: 50,)
         ],
       ),
     ],
   );
 }
 
-Widget buildInfoBtn() {
+Widget buildInfoBtn(String content) {
   return InkWell(
     onTap: () {
       //TODO
     },
     child: Container(
-      padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+      padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Shipping information',
+            content,
             style: defaultStyleBold,
           ),
           Icon(

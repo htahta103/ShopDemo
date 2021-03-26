@@ -60,11 +60,16 @@ class _MenuItemTabContentState extends State<MenuItemTabContent> {
   Widget build(BuildContext context) {
     return Consumer<ITabbar2HeaderViewmodel>(builder: (_, __, ___) {
       return _viewmodel.isLoading
-          ? Container(
-              alignment: Alignment.topCenter,
-              child: LoadingFadingLine.square(
-                size: 30,
-                backgroundColor: Colors.black,
+          ? ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: (MediaQuery.of(context).size.height - 270),
+              ),
+              child: Container(
+                alignment: Alignment.topCenter,
+                child: LoadingFadingLine.square(
+                  size: 30,
+                  backgroundColor: Colors.black,
+                ),
               ),
             )
           : Stack(children: [
@@ -91,7 +96,7 @@ class _MenuItemTabContentState extends State<MenuItemTabContent> {
                             end: Alignment.topCenter,
                             colors: [
                               Color.fromRGBO(240, 240, 240, 1),
-                              Color.fromRGBO(255, 255, 255, 0.3),
+                              Color.fromRGBO(255, 255, 255, 0.5),
                             ],
                           ),
                         ),
