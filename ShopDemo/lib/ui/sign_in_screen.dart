@@ -1,12 +1,9 @@
-import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_viewmodel.dart';
+import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_view_model.dart';
 import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
-import 'package:ShopDemo/ui/style/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {

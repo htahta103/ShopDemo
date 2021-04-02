@@ -10,6 +10,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget child;
   final PageController controller;
+  final Color color;
+  final Color shadowColor;
 
   const CustomAppBar({
     Key key,
@@ -19,11 +21,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.controller,
     this.onMailPressed,
     this.onCartPressed,
+    this.color,
+    this.shadowColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: color != null ? color : Colors.white,
+      shadowColor: shadowColor != null ? shadowColor : null,
       centerTitle: true,
       actions: [
         onCartPressed != null
@@ -32,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 CupertinoIcons.cart,
                 color: Color.fromRGBO(157, 158, 163, 1),
               ),
-              onPressed: onMailPressed,
+              onPressed: onCartPressed,
             )
           : SizedBox()
       ],

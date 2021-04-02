@@ -1,4 +1,4 @@
-import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_viewmodel.dart';
+import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_view_model.dart';
 import 'package:ShopDemo/global/global_data.dart';
 import 'package:ShopDemo/global/locator.dart';
 import 'package:ShopDemo/ui/app_router.dart';
