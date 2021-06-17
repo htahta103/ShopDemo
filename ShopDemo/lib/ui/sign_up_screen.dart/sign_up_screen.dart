@@ -4,7 +4,6 @@ import 'package:ShopDemo/ui/common_widgets/custom_checkbox.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_dropdown_formfield.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:circular_check_box/circular_check_box.dart';
 
 part 'date_of_birth_widget.dart';
 part 'mostly_interested_widget.dart';
