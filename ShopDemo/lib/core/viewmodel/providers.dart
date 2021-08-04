@@ -1,6 +1,8 @@
 
 import 'package:ShopDemo/core/viewmodel/common_widget_viewmodel/interfaces/itabbar_header_viewmodel.dart';
 import 'package:ShopDemo/core/viewmodel/implements/login_screen_viewmodel.dart';
+import 'package:ShopDemo/core/viewmodel/implements/product_detail_test_view_model.dart';
+import 'package:ShopDemo/core/viewmodel/interfaces/iproduct_detail_test_view_model.dart';
 import 'package:ShopDemo/core/viewmodel/interfaces/iproduct_detail_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -28,5 +30,9 @@ List<SingleChildWidget> viewmodelProviders = [
 
   ChangeNotifierProvider<IProductDetailViewmodel>(
     create: (_) => ProductDetailViewmodel(),
+  ),
+
+  ChangeNotifierProvider<IProductDetailTestViewmodel>(
+    create: (_) => ProductDetailTestViewmodel(),
   ),
 ];

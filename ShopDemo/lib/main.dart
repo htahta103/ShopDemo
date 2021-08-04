@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-        initialRoute: AppRouter.productDetail,
+        initialRoute: AppRouter.productDetailTest,
       ),
     );
   }

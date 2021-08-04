@@ -4,6 +4,7 @@ import 'package:ShopDemo/ui/home_screen/home_screen.dart';
 import 'package:ShopDemo/ui/info_screen/info_screen.dart';
 import 'package:ShopDemo/ui/liked_screen/liked_screen.dart';
 import 'package:ShopDemo/ui/product_detail_screen/product_detail_screen.dart';
+import 'package:ShopDemo/ui/product_detail_screen/product_detail_test.dart';
 import 'package:ShopDemo/ui/search_screen/search_screen.dart';
 import 'package:ShopDemo/ui/sign_in_screen.dart';
 import 'package:ShopDemo/ui/sign_up_screen.dart/sign_up_screen.dart';
@@ -21,6 +22,7 @@ class AppRouter {
   static const String liked = '/liked';
   static const String info = '/info';
   static const String productDetail = '/productDetail';
+  static const String productDetailTest = '/productDetailTest';
 
   static PageRouteBuilder _pageRouteBuilder(
       RouteSettings settings, Widget widget) {
@@ -82,6 +84,11 @@ class AppRouter {
          return _pageRouteBuilder(
           settings,
           ProductDetailScreen(),
+        );
+       case productDetailTest:
+         return _pageRouteBuilder(
+          settings,
+          ProductDetailTestScreen(),
         );
     }
   }
