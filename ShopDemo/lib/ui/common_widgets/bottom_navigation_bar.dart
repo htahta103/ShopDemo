@@ -1,7 +1,6 @@
 import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/app_router.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

@@ -1,8 +1,10 @@
 import 'package:ShopDemo/core/viewmodel/interfaces/ilogin_screen_view_model.dart';
 import 'package:ShopDemo/global/const.dart';
+import 'package:ShopDemo/ui/app_router.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +18,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final FocusNode _nodePassword = FocusNode();
 
-  bool _hidePassword = true;
   ILoginScreenViewmodel _loginViewmodel;
 
   @override
@@ -136,7 +137,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       'Sign Up',
                       style: defaultStyle,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRouter.signUp);
+                    },
                   ),
                 ],
               ),
@@ -155,7 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  FlatButton(
+                  InkWell(
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
@@ -181,7 +184,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ],
                       ),
                     ),
-                    onPressed: () async {
+                    onTap: () async {
                       await _loginViewmodel.onGoogleSignIn(context);
                     },
                   ),

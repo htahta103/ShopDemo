@@ -8,7 +8,7 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'common_widgets/freeship_widget.dart';
 
 class ShopHomeScreen extends StatelessWidget {
-  AutoScrollController _listviewController = AutoScrollController();
+  final AutoScrollController _listviewController = AutoScrollController();
 
   Future<void> scrollToIndex() async {
     await _listviewController.scrollToIndex(0,

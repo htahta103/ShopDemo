@@ -1,8 +1,6 @@
 import 'package:ShopDemo/core/viewmodel/providers.dart';
 import 'package:ShopDemo/global/global_data.dart';
 import 'package:ShopDemo/global/locator.dart';
-import 'package:ShopDemo/startups/init_firebase_messaging.dart';
-import 'package:ShopDemo/startups/init_flutter_locali_notification.dart';
 import 'package:ShopDemo/ui/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+   WidgetsFlutterBinding.ensureInitialized();
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
@@ -24,6 +23,7 @@ AndroidNotificationChannel channel;
 /// Initialize the [FlutterLocalNotificationsPlugin] package.
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 Future<void> main() async{
+   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   await Firebase.initializeApp();
 
@@ -33,7 +33,7 @@ Future<void> main() async{
     channel = const AndroidNotificationChannel(
       'high_importance_channel', // id
       'High Importance Notifications', // title
-      'This channel is used for important notifications.', // description
+      description:'This channel is used for important notifications.', // description
       importance: Importance.high,
     );
 
@@ -94,7 +94,7 @@ class _MyAppState extends State<MyApp> {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                channel.description,
+                channelDescription: channel.description,
                 // TODO add a proper drawable resource to android, for now using
                 //      one that already exists in example app.
                 icon: 'launch_background',
@@ -116,13 +116,13 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [...viewmodelProviders],
       child: GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'Shop Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-        initialRoute: AppRouter.productDetail,
+        initialRoute: AppRouter.signIn,
       ),
     );
   }

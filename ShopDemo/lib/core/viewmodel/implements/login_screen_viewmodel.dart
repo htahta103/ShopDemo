@@ -15,7 +15,6 @@ class LoginScreenViewmodel extends ChangeNotifier
   bool isUserSignIn = false;
   User user;
 
-
   LoginScreenViewmodel() {
     Firebase.initializeApp().then((FirebaseApp defaultApp) {
       _auth = FirebaseAuth.instanceFor(app: defaultApp);
@@ -46,14 +45,12 @@ class LoginScreenViewmodel extends ChangeNotifier
       userSignIn = await _googleSignIn.isSignedIn();
 
       isUserSignIn = userSignIn;
-
+      return user;
       //TODO save user to globaldata
     }
   }
 
-  void _handleEmailSignIn(){
-    
-  }
+  void _handleEmailSignIn() {}
 
   Future<void> onGoogleSignIn(BuildContext context) async {
     User user = await _handleSignIn();
@@ -69,15 +66,16 @@ class LoginScreenViewmodel extends ChangeNotifier
   }
 
   @override
-  Future<void> onEmailSignIn(BuildContext context, String email, String password) async {
-    user = (await _auth.signInWithEmailAndPassword(email: email, password: password)).user;
+  Future<void> onEmailSignIn(
+      BuildContext context, String email, String password) async {
+    user = (await _auth.signInWithEmailAndPassword(
+            email: email, password: password))
+        .user;
     final User currentUser = await _auth.currentUser;
-    if(user.uid == currentUser.uid)
-      onSignInSuccess();
+    if (user.uid == currentUser.uid) onSignInSuccess();
   }
 
-  void onSignInSuccess(){
-if(user != null)
-    Get.offAllNamed(AppRouter.home);
+  void onSignInSuccess() {
+    if (user != null) Get.offAllNamed(AppRouter.home);
   }
 }

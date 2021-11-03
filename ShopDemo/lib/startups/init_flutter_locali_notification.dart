@@ -15,7 +15,7 @@ class InitFlutterLocalNotification {
     await plugin.initialize(initializationSettings, onSelectNotification: _selectNoty);
   }
 
-  static Future _onDidReceiveLocalNotification(
+  static Future<void> _onDidReceiveLocalNotification(
       int id, String title, String body, String payload) {
     DialogUtils.showDialog(
         title: title,
