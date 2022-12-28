@@ -30,22 +30,23 @@ class CustomButtonDialog extends StatelessWidget {
       child: ButtonTheme(
         minWidth: minWidth,
         height: height,
-        child: FlatButton(
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        child: ElevatedButton(
           onPressed: onPressed,
-          padding: padding,
-          color: background,
-          textColor: contentColor,
-          disabledColor: Colors.grey[300],
-          disabledTextColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(btnRadius),
-            side: BorderSide(
-              color: borderColor,
-              width: 1,
+          child: Container(child: child),
+          style: ElevatedButton.styleFrom(
+            padding: padding,
+            backgroundColor: background,
+            foregroundColor: contentColor,
+            disabledBackgroundColor: Colors.grey[300],
+            disabledForegroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(btnRadius),
+              side: BorderSide(
+                color: borderColor,
+                width: 1,
+              ),
             ),
           ),
-          child: child,
         ),
       ),
     );

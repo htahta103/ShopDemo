@@ -1,10 +1,8 @@
 import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/app_router.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -41,25 +39,33 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           NavigateItem(
             content: Pages.folder,
             icon: CupertinoIcons.folder,
-            onTap: () {Get.toNamed(AppRouter.folder);},
+            onTap: () {
+              Get.toNamed(AppRouter.folder);
+            },
             currentPage: widget.currentPage,
           ),
           NavigateItem(
             content: Pages.search,
             icon: CupertinoIcons.search,
-            onTap: () {Get.toNamed(AppRouter.search);},
+            onTap: () {
+              Get.toNamed(AppRouter.search);
+            },
             currentPage: widget.currentPage,
           ),
           NavigateItem(
             content: Pages.liked,
             icon: CupertinoIcons.heart,
-            onTap: () {Get.toNamed(AppRouter.liked);},
+            onTap: () {
+              Get.toNamed(AppRouter.liked);
+            },
             currentPage: widget.currentPage,
           ),
           NavigateItem(
             content: Pages.info,
             icon: CupertinoIcons.info,
-            onTap: () {Get.toNamed(AppRouter.info);},
+            onTap: () {
+              Get.toNamed(AppRouter.info);
+            },
             currentPage: widget.currentPage,
           ),
         ],
@@ -87,7 +93,7 @@ class NavigateItem extends StatelessWidget {
     return Expanded(
       child: isSelected
           ? ElasticIn(
-            duration: Duration(milliseconds: 500),
+              duration: Duration(milliseconds: 500),
               child: InkWell(
                 onTap: onTap,
                 child: Container(
@@ -99,7 +105,10 @@ class NavigateItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Icon(icon),
-                      Text(content, style: defaultStyleBold,),
+                      Text(
+                        content,
+                        style: defaultStyleBold,
+                      ),
                     ],
                   ),
                 ),
@@ -115,7 +124,10 @@ class NavigateItem extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(icon,color: Colors.blueGrey,),
+                    Icon(
+                      icon,
+                      color: Colors.blueGrey,
+                    ),
                     // Text(content),
                   ],
                 ),

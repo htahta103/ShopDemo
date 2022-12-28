@@ -1,10 +1,8 @@
-import 'package:ShopDemo/core/viewmodel/common_widget_viewmodel/interfaces/itabbar2_header_viewmodel.dart';
 import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/common_widgets/tabbar_widget_with_sticky_header.dart/custom_tabbar2.dart';
 import 'package:ShopDemo/ui/common_widgets/tabbar_widget_with_sticky_header.dart/tabbar2_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class MenuItem extends StatelessWidget {
@@ -61,7 +59,9 @@ Widget stickyHeader(PageController controller, Function loadingAndScroll) {
           buildInfoBtn('Payment instructions'),
           buildInfoBtn('Privacy Policy'),
           buildInfoBtn('Terms and condition'),
-          SizedBox(height: 50,)
+          SizedBox(
+            height: 50,
+          )
         ],
       ),
     ],

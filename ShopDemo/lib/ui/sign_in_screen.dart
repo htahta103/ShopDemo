@@ -155,7 +155,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  FlatButton(
+                  InkWell(
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
@@ -181,11 +181,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         ],
                       ),
                     ),
-                    onPressed: () async {
+                    onTap: () async {
                       await _loginViewmodel.onGoogleSignIn(context);
                     },
                   ),
-                  FlatButton(
+                  InkWell(
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
@@ -209,7 +209,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ],
                       ),
                     ),
-                    onPressed: () async {
+                    onTap: () async {
                       // await _loginViewmodel.onGoogleSignIn(context);
                       //TODO
                     },
