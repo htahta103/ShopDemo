@@ -3,21 +3,20 @@ import 'package:flutter/material.dart';
 
 class TabbarHeaderViewmodel extends ChangeNotifier
     implements ITabbarHeaderViewmodel {
-  int _currentIndex;
+  late int _currentIndex;
   @override
   int get currentIndex => _currentIndex;
-  TabbarHeaderViewmodel(){
+  TabbarHeaderViewmodel() {
     _currentIndex = 0;
   }
-  
+
   @override
   void onPageChange(int idx) {
     _currentIndex = idx;
-    function(idx);
+    function!(idx);
     notifyListeners();
   }
 
   @override
-  Function function;
-
+  Function? function;
 }

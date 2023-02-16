@@ -6,18 +6,18 @@ import 'tabbar_page_controller.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 class TabbarHeader extends StatefulWidget {
-  final PageController controller;
+  final PageController? controller;
   final List<Tab> tabs;
-  final Color indicatorColor;
-  final Color backgroundColor;
-  final Color foregroundColor;
-  final Color onSelectedBackground;
-  final Color onSelectedTextColor;
+  final Color? indicatorColor;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final Color? onSelectedBackground;
+  final Color? onSelectedTextColor;
 
   const TabbarHeader({
-    Key key,
-    @required this.controller,
-    @required this.tabs,
+    Key? key,
+    required this.controller,
+    required this.tabs,
     this.backgroundColor,
     this.indicatorColor,
     this.foregroundColor,
@@ -30,8 +30,8 @@ class TabbarHeader extends StatefulWidget {
 }
 
 class _TabbarHeaderState extends State<TabbarHeader> {
-  ITabbarHeaderViewmodel _viewmodel;
-  AutoScrollController _listviewController;
+  late ITabbarHeaderViewmodel _viewmodel;
+  AutoScrollController? _listviewController;
   @override
   void initState() {
     _viewmodel = Provider.of<ITabbarHeaderViewmodel>(context, listen: false);
@@ -41,14 +41,14 @@ class _TabbarHeaderState extends State<TabbarHeader> {
   }
 
   Future _scrollToIndex(int index) async {
-    await _listviewController.scrollToIndex(index,
+    await _listviewController!.scrollToIndex(index,
         preferPosition: AutoScrollPosition.middle);
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: Theme.of(context).textTheme.bodyText2.copyWith(
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(
           color: widget.foregroundColor ??
               Theme.of(context).primaryIconTheme.color),
       child: Container(
@@ -65,7 +65,7 @@ class _TabbarHeaderState extends State<TabbarHeader> {
                     var index = widget.tabs.indexOf(item);
                     return AutoScrollTag(
                       index: index,
-                      controller: _listviewController,
+                      controller: _listviewController!,
                       key: ValueKey(index),
                       child: InkWell(
                         child: Container(
@@ -78,7 +78,7 @@ class _TabbarHeaderState extends State<TabbarHeader> {
                           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                           child: Center(
                             child: Text(
-                              item.text,
+                              item.text!,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: defaultFont,
@@ -91,8 +91,8 @@ class _TabbarHeaderState extends State<TabbarHeader> {
                         ),
                         onTap: () {
                           _viewmodel.onPageChange(index);
-                          if (widget.controller.isInitialized)
-                            widget.controller.animateToPage(
+                          if (widget.controller!.isInitialized)
+                            widget.controller!.animateToPage(
                               widget.tabs.indexOf(item),
                               // tabs.indexWhere((tab) => tab.text == item.text),
                               curve: Curves.easeInOut,

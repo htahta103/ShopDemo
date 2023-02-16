@@ -17,10 +17,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 /// Create a [AndroidNotificationChannel] for heads up notifications
-AndroidNotificationChannel channel;
+late AndroidNotificationChannel channel;
 
 /// Initialize the [FlutterLocalNotificationsPlugin] package.
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
@@ -32,6 +32,7 @@ Future<void> main() async {
   channel = const AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
+    'Description',
     importance: Importance.high,
   );
 
@@ -74,15 +75,15 @@ class _MyAppState extends State<MyApp> {
   Future<void> initStartup() async {
     FirebaseMessaging.instance
         .getInitialMessage()
-        .then((RemoteMessage message) {
+        .then((RemoteMessage? message) {
       if (message != null) {
         print(message);
       }
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
       if (notification != null && android != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
@@ -92,9 +93,7 @@ class _MyAppState extends State<MyApp> {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                // TODO add a proper drawable resource to android, for now using
-                //      one that already exists in example app.
-                icon: 'launch_background',
+                'launch_background',
               ),
             ));
       }
@@ -104,7 +103,7 @@ class _MyAppState extends State<MyApp> {
       print('A new onMessageOpenedApp event was published!');
       print('Message');
     });
-    print('token: ' + (await FirebaseMessaging.instance.getToken()));
+    // print('token: ' + (await FirebaseMessaging.instance.getToken())??'';
   }
 
   @override
@@ -118,7 +117,7 @@ class _MyAppState extends State<MyApp> {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-        initialRoute: AppRouter.productDetail,
+        initialRoute: AppRouter.splash,
       ),
     );
   }

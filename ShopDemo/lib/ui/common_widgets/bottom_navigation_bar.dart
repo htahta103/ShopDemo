@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  final String currentPage;
+  final String? currentPage;
 
-  const CustomBottomNavigationBar({Key key, this.currentPage})
+  const CustomBottomNavigationBar({Key? key, this.currentPage})
       : super(key: key);
   @override
   _CustomBottomNavigationBarState createState() =>
@@ -78,14 +78,14 @@ class NavigateItem extends StatelessWidget {
   final IconData icon;
   final String content;
   final Function onTap;
-  final String currentPage;
+  final String? currentPage;
 
   const NavigateItem(
-      {Key key,
-      @required this.icon,
-      @required this.content,
-      @required this.onTap,
-      @required this.currentPage})
+      {Key? key,
+      required this.icon,
+      required this.content,
+      required this.onTap,
+      this.currentPage})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class NavigateItem extends StatelessWidget {
           ? ElasticIn(
               duration: Duration(milliseconds: 500),
               child: InkWell(
-                onTap: onTap,
+                onTap: onTap as void Function()?,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   decoration: BoxDecoration(
@@ -115,7 +115,7 @@ class NavigateItem extends StatelessWidget {
               ),
             )
           : InkWell(
-              onTap: onTap,
+              onTap: onTap as void Function()?,
               child: Container(
                 padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                 decoration: BoxDecoration(

@@ -1,13 +1,13 @@
-import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_button_dialog.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog extends StatelessWidget {
-  final String title;
-  final String content;
+  final String? title;
+  final String? content;
   final List<DialogBtns> listBtn;
 
-  const CustomDialog({Key key, this.title, this.content, this.listBtn})
+  const CustomDialog(
+      {Key? key, this.title, this.content, required this.listBtn})
       : super(key: key);
 
   @override
@@ -31,14 +31,16 @@ class CustomDialog extends StatelessWidget {
         );
       }).toList();
     }
-    return AlertDialog(title: Text(
-        title,
+
+    return AlertDialog(
+      title: Text(
+        title ?? '',
         style: TextStyle(
           color: Colors.red,
           fontWeight: FontWeight.bold,
         ),
       ),
-      content: Text(content),
+      content: Text(content!),
       actions: <Widget>[
         ..._buildListBtn(),
         SizedBox(width: 12),
@@ -48,7 +50,7 @@ class CustomDialog extends StatelessWidget {
 }
 
 class DialogBtns {
-  final Function onPressed;
+  final Function? onPressed;
   final String content;
   final Color background;
   final Color contentColor;

@@ -7,11 +7,11 @@ abstract class ITabbar2HeaderViewmodel implements ChangeNotifier{
   void onMoreItemClick();
   List<String> get tabs;
   int get currentIndex;
-  Function function;
-  bool get isLoading;
-  bool get moreLoading;
-  int get currentPage;
-  int get pageNumber;
+  Function? function;
+  bool? get isLoading;
+  bool? get moreLoading;
+  int? get currentPage;
+  int? get pageNumber;
   List<Widget> get items;
   List<Widget> get showItems;
 

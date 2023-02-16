@@ -79,9 +79,14 @@ class AppRouter {
           InfoScreen(),
         );
       case productDetail:
-         return _pageRouteBuilder(
+        return _pageRouteBuilder(
           settings,
           ProductDetailScreen(),
+        );
+      default:
+        return _pageRouteBuilder(
+          settings,
+          SplashScreen(),
         );
     }
   }

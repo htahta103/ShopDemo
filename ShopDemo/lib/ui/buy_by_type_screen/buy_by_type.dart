@@ -30,7 +30,7 @@ class _BuyByTypeState extends State<BuyByType> {
   List<Widget> items = [];
   int _current = 0;
 
-  BuyByTypeSlideItems mapDataToSlideItem() {
+  void mapDataToSlideItem() {
     var currentPage = 1;
     var pageNumber = (titles.length / 8).ceil();
     while (currentPage <= pageNumber) {

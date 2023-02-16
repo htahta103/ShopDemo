@@ -3,8 +3,11 @@ import 'package:ShopDemo/global/const.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_button.dart';
 import 'package:ShopDemo/ui/common_widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
+
+import 'app_router.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -17,7 +20,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final FocusNode _nodePassword = FocusNode();
 
   bool _hidePassword = true;
-  ILoginScreenViewmodel _loginViewmodel;
+  late ILoginScreenViewmodel _loginViewmodel;
 
   @override
   void initState() {
@@ -136,7 +139,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       'Sign Up',
                       style: defaultStyle,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRouter.signUp);
+                    },
                   ),
                 ],
               ),
@@ -160,7 +165,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.grey[400],
+                          color: Colors.grey[400] ?? Colors.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),
@@ -190,7 +195,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.grey[400],
+                          color: Colors.grey[400] ?? Colors.grey,
                         ),
                         borderRadius: BorderRadius.circular(5),
                       ),

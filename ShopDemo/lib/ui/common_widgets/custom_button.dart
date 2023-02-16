@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomButton extends StatelessWidget {
   final CustomButtonOption option;
 
-  const CustomButton({Key key, @required this.option}) : super(key: key);
+  const CustomButton({Key? key, required this.option}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: option.isEnable ? option.onTap : null,
+      onTap: option.isEnable ?? true ? option.onTap as void Function()? : null,
       child: Container(
         height: option.height,
         width: option.width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(option.borderRadius),
-          color: option.isEnable
+          borderRadius: BorderRadius.circular(option.borderRadius ?? 0),
+          color: option.isEnable ?? true
               ? (option.color != null ? option.color : Colors.yellow)
               : Color.fromRGBO(173, 173, 173, 1),
           border: Border.all(
-            color: option.borderColor,
+            color: option.borderColor ?? Colors.black,
           ),
-          gradient: option.haveGradient ? LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Color.fromRGBO(102,126,234,1), Color.fromRGBO(100,182,255,1)]): null,
+          gradient: option.haveGradient ?? false
+              ? LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                      Color.fromRGBO(102, 126, 234, 1),
+                      Color.fromRGBO(100, 182, 255, 1)
+                    ])
+              : null,
         ),
         //TODO isAvailable,
         child: Stack(
@@ -36,7 +40,7 @@ class CustomButton extends StatelessWidget {
                     child: FaIcon(option.prefixIcon),
                   )
                 : SizedBox(),
-            option.isCenterContent
+            option.isCenterContent ?? true
                 ? Center(
                     child: option.content,
                   )
@@ -48,7 +52,8 @@ class CustomButton extends StatelessWidget {
                 ? Container(
                     padding: EdgeInsets.only(right: 30),
                     alignment: Alignment.centerRight,
-                    child: FaIcon(option.suffixIcon),)
+                    child: FaIcon(option.suffixIcon),
+                  )
                 : SizedBox(),
           ],
         ),
@@ -58,22 +63,22 @@ class CustomButton extends StatelessWidget {
 }
 
 class CustomButtonOption {
-  final Color color;
+  final Color? color;
   final Widget content;
   final Function onTap;
-  final IconData prefixIcon;
-  final IconData suffixIcon;
-  final double borderRadius;
-  final double width;
-  final double height;
-  final Color borderColor;
-  final bool isCenterContent;
-  final isEnable;
-  final bool haveGradient;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final double? borderRadius;
+  final double? width;
+  final double? height;
+  final Color? borderColor;
+  final bool? isCenterContent;
+  final bool? isEnable;
+  final bool? haveGradient;
   CustomButtonOption({
     this.color,
-    @required this.onTap,
-    @required this.content,
+    required this.onTap,
+    required this.content,
     this.prefixIcon,
     this.suffixIcon,
     this.borderRadius = 5,

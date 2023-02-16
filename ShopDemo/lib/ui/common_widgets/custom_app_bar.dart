@@ -4,17 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Function onBackPressed;
-  final Function onMailPressed;
-  final Function onCartPressed;
-  final String title;
-  final Widget child;
-  final PageController controller;
-  final Color color;
-  final Color shadowColor;
+  final Function? onBackPressed;
+  final Function? onMailPressed;
+  final Function? onCartPressed;
+  final String? title;
+  final Widget? child;
+  final PageController? controller;
+  final Color? color;
+  final Color? shadowColor;
 
   const CustomAppBar({
-    Key key,
+    Key? key,
     this.onBackPressed,
     this.title,
     this.child,
@@ -32,14 +32,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         onCartPressed != null
-          ? IconButton(
-              icon: Icon(
-                CupertinoIcons.cart,
-                color: Color.fromRGBO(157, 158, 163, 1),
-              ),
-              onPressed: onCartPressed,
-            )
-          : SizedBox()
+            ? IconButton(
+                icon: Icon(
+                  CupertinoIcons.cart,
+                  color: Color.fromRGBO(157, 158, 163, 1),
+                ),
+                onPressed: onCartPressed as void Function()?,
+              )
+            : SizedBox()
       ],
       leading: onMailPressed != null
           ? IconButton(
@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 CupertinoIcons.mail,
                 color: Color.fromRGBO(157, 158, 163, 1),
               ),
-              onPressed: onMailPressed,
+              onPressed: onMailPressed as void Function()?,
             )
           : (onBackPressed != null
               ? IconButton(
@@ -55,13 +55,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     CupertinoIcons.back,
                     color: Color.fromRGBO(157, 158, 163, 1),
                   ),
-                  onPressed: onBackPressed,
+                  onPressed: onBackPressed as void Function()?,
                 )
               : null),
       title: child == null
           ? (title != null
               ? Text(
-                  this.title,
+                  this.title!,
                   style: TextStyle(
                     fontFamily: defaultFont,
                     fontSize: 20,
@@ -87,8 +87,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Tab(text: 'Women'),
                     Tab(text: 'Child'),
                     Tab(text: 'Bigsize'),
-                    Tab(text: 'accessories'),
-                    Tab(text: 'checkêchkcek'),
+                    Tab(text: 'Accessories'),
                   ],
                 ),
               ),

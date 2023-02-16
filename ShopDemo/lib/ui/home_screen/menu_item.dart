@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class MenuItem extends StatelessWidget {
-  final Function autoScroll;
-  const MenuItem({Key key, this.autoScroll}) : super(key: key);
+  final Function? autoScroll;
+  const MenuItem({Key? key, this.autoScroll}) : super(key: key);
 
   Future<void> loadingAndScroll() async {
     //TODO loading
-    await autoScroll();
+    await autoScroll!();
   }
 
   @override

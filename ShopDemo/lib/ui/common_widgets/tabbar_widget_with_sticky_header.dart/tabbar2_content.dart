@@ -8,9 +8,9 @@ import 'package:provider/provider.dart';
 import '../custom_price_textfield.dart';
 
 class ItemProduct extends StatelessWidget {
-  final int index;
+  final int? index;
 
-  const ItemProduct({Key key, this.index}) : super(key: key);
+  const ItemProduct({Key? key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -31,7 +31,7 @@ class ItemProduct extends StatelessWidget {
               height: 5,
             ),
             CustomPriceTextField(
-              price: 100000 + index.toDouble(),
+              price: 100000 + index!.toDouble(),
               isSale: false,
             ),
           ],
@@ -42,13 +42,13 @@ class ItemProduct extends StatelessWidget {
 }
 
 class MenuItemTabContent extends StatefulWidget {
-  const MenuItemTabContent({Key key}) : super(key: key);
+  const MenuItemTabContent({Key? key}) : super(key: key);
   @override
   _MenuItemTabContentState createState() => _MenuItemTabContentState();
 }
 
 class _MenuItemTabContentState extends State<MenuItemTabContent> {
-  ITabbar2HeaderViewmodel _viewmodel;
+  late ITabbar2HeaderViewmodel _viewmodel;
   @override
   void initState() {
     super.initState();
@@ -59,7 +59,7 @@ class _MenuItemTabContentState extends State<MenuItemTabContent> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ITabbar2HeaderViewmodel>(builder: (_, __, ___) {
-      return _viewmodel.isLoading
+      return _viewmodel.isLoading!
           ? ConstrainedBox(
               constraints: BoxConstraints(
                 minHeight: (MediaQuery.of(context).size.height - 270),
@@ -82,7 +82,7 @@ class _MenuItemTabContentState extends State<MenuItemTabContent> {
                 ),
               ),
               _viewmodel.currentPage == _viewmodel.pageNumber &&
-                      !_viewmodel.moreLoading
+                      !_viewmodel.moreLoading!
                   ? SizedBox()
                   : Positioned(
                       bottom: 0.0,
@@ -104,7 +104,7 @@ class _MenuItemTabContentState extends State<MenuItemTabContent> {
                           onTap: () {
                             _viewmodel.onMoreItemClick();
                           },
-                          child: _viewmodel.moreLoading
+                          child: _viewmodel.moreLoading!
                               ? Container(
                                   alignment: Alignment.topCenter,
                                   child: LoadingFadingLine.square(

@@ -7,7 +7,7 @@ class CustomTextField extends StatefulWidget {
 
   final bool isUserNameField;
 
-  const CustomTextField({Key key, @required this.isUserNameField})
+  const CustomTextField({Key? key, required this.isUserNameField})
       : super(key: key);
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -130,23 +130,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
 }
 
 class TextFieldOption {
-  final Function(String) onChanged;
-  final Function(String) validator;
-  final Function(String) onSubmited;
-  final Function(String) onTap;
-  final double height;
-  final double width;
-  final FocusNode focuseNode;
-  final String placeHolder;
-  final int maxline;
-  final List<TextInputFormatter> inputFormatter;
-  final TextInputType keyboardType;
+  final Function(String)? onChanged;
+  final Function(String)? validator;
+  final Function(String)? onSubmited;
+  final Function(String)? onTap;
+  final double? height;
+  final double? width;
+  final FocusNode? focuseNode;
+  final String? placeHolder;
+  final int? maxline;
+  final List<TextInputFormatter>? inputFormatter;
+  final TextInputType? keyboardType;
   final bool enabled;
   final bool obscureText;
   final bool readOnly;
   final bool isRequired;
-  final Widget suffixIcon;
-  final String label;
+  final Widget? suffixIcon;
+  final String? label;
 
   TextFieldOption({
     this.onChanged,
@@ -172,7 +172,7 @@ class TextFieldOption {
 class CustomTextFormField extends StatelessWidget {
   final TextFieldOption option;
 
-  const CustomTextFormField({Key key, @required this.option}) : super(key: key);
+  const CustomTextFormField({Key? key, required this.option}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -202,7 +202,7 @@ class CustomTextFormField extends StatelessWidget {
                                   fontSize: 14,
                                   color: Colors.red),
                             )
-                          : SizedBox(),
+                          : SizedBox() as InlineSpan,
                     ],
                   ),
                 )

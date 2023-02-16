@@ -7,16 +7,16 @@ import 'tabbar2_page_controller.dart';
 
 class Tabbar2Header extends StatefulWidget {
   final PageController controller;
-  final Color indicatorColor;
-  final Color backgroundColor;
-  final Color foregroundColor;
-  final Color onSelectedBackground;
-  final Color onSelectedTextColor;
-  final Function loadingAndScroll;
+  final Color? indicatorColor;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final Color? onSelectedBackground;
+  final Color? onSelectedTextColor;
+  final Function? loadingAndScroll;
 
   const Tabbar2Header({
-    Key key,
-    @required this.controller,
+    Key? key,
+    required this.controller,
     this.backgroundColor,
     this.indicatorColor,
     this.foregroundColor,
@@ -30,8 +30,8 @@ class Tabbar2Header extends StatefulWidget {
 }
 
 class _Tabbar2HeaderState extends State<Tabbar2Header> {
-  ITabbar2HeaderViewmodel _viewmodel;
-  AutoScrollController _listviewController;
+  late ITabbar2HeaderViewmodel _viewmodel;
+  AutoScrollController? _listviewController;
   List<Tab> tabs = [];
   @override
   void initState() {
@@ -47,14 +47,14 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
   }
 
   Future _scrollToIndex(int index) async {
-    await _listviewController.scrollToIndex(index,
+    await _listviewController!.scrollToIndex(index,
         preferPosition: AutoScrollPosition.middle);
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: Theme.of(context).textTheme.bodyText2.copyWith(
+      style: Theme.of(context).textTheme.bodyText2!.copyWith(
           color: widget.foregroundColor ??
               Theme.of(context).primaryIconTheme.color),
       child: Container(
@@ -71,7 +71,7 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
                     var index = tabs.indexOf(item);
                     return AutoScrollTag(
                       index: index,
-                      controller: _listviewController,
+                      controller: _listviewController!,
                       key: ValueKey(index),
                       child: InkWell(
                         child: Container(
@@ -82,7 +82,7 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
                           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                           child: Center(
                             child: Text(
-                              item.text,
+                              item.text!,
                               style: TextStyle(
                                   fontSize: 14,
                                   color: _viewmodel.currentIndex == index
@@ -101,7 +101,7 @@ class _Tabbar2HeaderState extends State<Tabbar2Header> {
                               curve: Curves.easeInOut,
                               duration: Duration(milliseconds: 200),
                             );
-                          widget.loadingAndScroll();
+                          widget.loadingAndScroll!();
                         },
                       ),
                     );

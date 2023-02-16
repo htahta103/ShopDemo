@@ -1,22 +1,29 @@
 import 'package:ShopDemo/ui/app_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
-  
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
 
-    //Set 2s to check, sync or setup something in real app
-   Future.delayed(Duration(milliseconds: 2000),(){Get.offAllNamed(AppRouter.signIn);});
+    if (FirebaseAuth.instance.currentUser != null) {
+      Future.delayed(Duration(milliseconds: 2000), () {
+        Get.offAllNamed(AppRouter.home);
+      });
+    } else {
+      Future.delayed(Duration(milliseconds: 2000), () {
+        Get.offAllNamed(AppRouter.signIn);
+      });
+    }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           end: Alignment.bottomLeft,
           stops: [0.4, 0.9],
           colors: [
-            Colors.deepOrange[50],
+            Colors.deepOrange[50] ?? Colors.deepOrange,
             Colors.blueGrey,
           ],
         ),

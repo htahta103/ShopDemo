@@ -109,7 +109,7 @@ class _ContactPrefestedState extends State<ContactPrefested> {
 class ItemCheckBox extends StatefulWidget {
   final String title;
 
-  const ItemCheckBox({Key key, @required this.title}) : super(key: key);
+  const ItemCheckBox({Key? key, required this.title}) : super(key: key);
   @override
   _ItemCheckBoxState createState() => _ItemCheckBoxState();
 }

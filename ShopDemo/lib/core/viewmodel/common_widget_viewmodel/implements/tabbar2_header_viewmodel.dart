@@ -12,21 +12,21 @@ class Tabbar2HeaderViewmodel extends ChangeNotifier
   @override
   List<String> get tabs => _tabs;
 
-  int _currentPage;
+  int _currentPage = 0;
   @override
   int get currentPage => _currentPage;
 
-  bool _isLoading;
+  bool _isLoading = false;
   @override
   bool get isLoading => _isLoading;
 
-  bool _moreLoading;
+  bool _moreLoading = false;
   @override
   bool get moreLoading => _moreLoading;
 
-  int _pageNumber;
+  int _pageNumber = 0;
   @override
-  int get pageNumber => _pageNumber;
+  int? get pageNumber => _pageNumber;
 
   List<Widget> _items = [];
   @override
@@ -46,13 +46,13 @@ class Tabbar2HeaderViewmodel extends ChangeNotifier
     _isLoading = true;
     notifyListeners();
     _currentIndex = idx;
-    function(idx);
+    function!(idx);
     _initPageItem();
     hideLoading();
   }
 
   @override
-  Function function;
+  Function? function;
 
   @override
   void init() {
@@ -87,19 +87,19 @@ class Tabbar2HeaderViewmodel extends ChangeNotifier
     _moreLoading = false;
     _initPageItem();
   }
-   
-   void _initPageItem(){
+
+  void _initPageItem() {
     showItems.clear();
     _currentPage = 1;
     _pageNumber = (items.length / 9).ceil();
     showItems.addAll(items.getRange(0, 9));
-   }
+  }
 
   @override
   void hideLoading() {
     Future.delayed(Duration(seconds: 1), () {
-    _isLoading = false;
-    notifyListeners();
+      _isLoading = false;
+      notifyListeners();
     });
   }
 
@@ -110,9 +110,9 @@ class Tabbar2HeaderViewmodel extends ChangeNotifier
 
     Future.delayed(Duration(seconds: 3), () {
       _currentPage++;
-      if (currentPage < pageNumber)
-        showItems.addAll(
-            items.getRange(9 * (currentPage - 1), 9*currentPage));
+      if (currentPage < pageNumber!)
+        showItems
+            .addAll(items.getRange(9 * (currentPage - 1), 9 * currentPage));
       else if (currentPage == pageNumber)
         showItems.addAll(items.getRange(9 * (currentPage - 1), items.length));
       _moreLoading = false;

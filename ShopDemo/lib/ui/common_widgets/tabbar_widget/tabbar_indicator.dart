@@ -4,12 +4,12 @@ import 'tabbar_page_controller.dart';
 class TabbarIndicator extends StatefulWidget {
   final PageController controller;
   final List<Tab> tabs;
-  final Color color;
+  final Color? color;
 
   const TabbarIndicator({
-    Key key,
-    @required this.controller,
-    @required this.tabs,
+    Key? key,
+    required this.controller,
+    required this.tabs,
     this.color,
   }) : super(key: key);
 

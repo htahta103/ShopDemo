@@ -15,10 +15,10 @@ class _CustomDropdownState extends State<CustomDropdown> {
     super.initState();
   }
 
-  DateTime _date;
+  DateTime? _date;
   @override
   Widget build(BuildContext context) {
-    var currentDate = _date != null ? DateFormat('yyyy-MM-dd').format(_date) : 'dd/mm/YYYY';
+    var currentDate = _date != null ? DateFormat('yyyy-MM-dd').format(_date!) : 'dd/mm/YYYY';
     var check = currentDate.compareTo('dd/mm/YYYY');
 
 

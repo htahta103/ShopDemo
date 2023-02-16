@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BoardingSlideItem extends StatelessWidget {
   final SlideItem item;
 
-  const BoardingSlideItem({Key key, @required this.item}) : super(key: key);
+  const BoardingSlideItem({Key? key, required this.item}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,5 +41,5 @@ class SlideItem {
   final String detail;
 
   SlideItem(
-      {@required this.image, @required this.title, @required this.detail});
+      {required this.image, required this.title, required this.detail});
 }

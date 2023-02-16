@@ -15,9 +15,9 @@ class CustomCheckbox extends StatefulWidget {
   final double height;
 
   const CustomCheckbox({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
+    Key? key,
+    required this.value,
+    required this.onChanged,
     this.activeColor = const Color.fromRGBO(143, 95, 67, 1),
     this.inactiveColor = const Color.fromRGBO(157, 158, 163, 1),
     this.borderRadius = 0,

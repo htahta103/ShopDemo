@@ -1,10 +1,8 @@
-import 'package:ShopDemo/global/const.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class BuyByTypeSlideItems extends StatelessWidget {
   final List<String> items;
-  BuyByTypeSlideItems({Key key, this.items}) : super(key: key);
+  BuyByTypeSlideItems({Key? key, required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +18,9 @@ class BuyByTypeSlideItems extends StatelessWidget {
 }
 
 class BuyByTypeItem extends StatelessWidget {
-  final String content;
+  final String? content;
 
-  const BuyByTypeItem({Key key, this.content}) : super(key: key);
+  const BuyByTypeItem({Key? key, this.content}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +34,7 @@ class BuyByTypeItem extends StatelessWidget {
           size: 30,
         ),
         Text(
-          content,
+          content ?? '',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ]),

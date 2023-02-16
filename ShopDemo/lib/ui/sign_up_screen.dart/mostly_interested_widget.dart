@@ -1,15 +1,15 @@
 part of 'sign_up_screen.dart';
 
 class MostInterested extends StatefulWidget {
-  MostInterested({Key key}) : super(key: key);
+  MostInterested({Key? key}) : super(key: key);
 
   @override
   _MostInterestedState createState() => _MostInterestedState();
 }
 
 class _MostInterestedState extends State<MostInterested> {
-  bool isWomenswearSelected;
-  bool isMenswearSelected;
+  bool? isWomenswearSelected;
+  bool? isMenswearSelected;
   @override
   Widget build(BuildContext context) {
     return Column(

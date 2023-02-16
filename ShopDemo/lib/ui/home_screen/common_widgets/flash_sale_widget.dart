@@ -9,10 +9,10 @@ import 'package:intl/intl.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class FlashSaleWidget extends StatelessWidget {
-  var globalData = locator<GlobalData>();
+  GlobalData? globalData = locator<GlobalData>();
 
   DateTime getExpiredTime() {
-    var expiredTime = (globalData.expiredDate.difference(new DateTime.now()));
+    var expiredTime = (globalData!.expiredDate.difference(new DateTime.now()));
     var convertExpiredTime = new DateTime(0, 0, expiredTime.inDays,
         expiredTime.inHours, expiredTime.inMinutes, expiredTime.inSeconds);
     return convertExpiredTime;

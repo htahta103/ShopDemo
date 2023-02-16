@@ -12,11 +12,11 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen>
     with SingleTickerProviderStateMixin {
   List<String> items = [];
-  var _currentIndex;
+  late var _currentIndex;
   AutoScrollController _listviewController = AutoScrollController();
-  TabController _tabController;
-  Color bgColor;
-  GlobalKey<RectGetterState> globalKey;
+  late TabController _tabController;
+  Color? bgColor;
+  late GlobalKey<RectGetterState> globalKey;
   List<GlobalKey<RectGetterState>> tabKeys = [];
   bool onTapClick = false;
   @override

@@ -11,10 +11,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 class LoginScreenViewmodel extends ChangeNotifier
     implements ILoginScreenViewmodel {
   GoogleSignIn _googleSignIn = GoogleSignIn();
-  FirebaseAuth _auth;
+  late FirebaseAuth _auth;
   bool isUserSignIn = false;
-  User user;
-
+  User? user;
 
   LoginScreenViewmodel() {
     Firebase.initializeApp().then((FirebaseApp defaultApp) {
@@ -26,7 +25,7 @@ class LoginScreenViewmodel extends ChangeNotifier
 
   void _checkIfUserLogin() {}
 
-  Future<User> _handleSignIn() async {
+  Future<User?> _handleSignIn() async {
     bool userSignIn = await _googleSignIn.isSignedIn();
 
     isUserSignIn = userSignIn;
@@ -34,12 +33,12 @@ class LoginScreenViewmodel extends ChangeNotifier
     if (isUserSignIn) {
       user = _auth.currentUser;
     } else {
-      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
 
       user = (await _auth.signInWithCredential(credential)).user;
 
@@ -49,14 +48,14 @@ class LoginScreenViewmodel extends ChangeNotifier
 
       //TODO save user to globaldata
     }
+    return null;
   }
 
-  void _handleEmailSignIn(){
-    
-  }
+  void _handleEmailSignIn() {}
 
   Future<void> onGoogleSignIn(BuildContext context) async {
-    User user = await _handleSignIn();
+    User? user = await _handleSignIn();
+    if (user != null) {}
     onSignInSuccess();
     //TODO Navigate to some page
     // var userSignedIn = Navigator.push(
@@ -69,15 +68,16 @@ class LoginScreenViewmodel extends ChangeNotifier
   }
 
   @override
-  Future<void> onEmailSignIn(BuildContext context, String email, String password) async {
-    user = (await _auth.signInWithEmailAndPassword(email: email, password: password)).user;
-    final User currentUser = await _auth.currentUser;
-    if(user.uid == currentUser.uid)
-      onSignInSuccess();
+  Future<void> onEmailSignIn(
+      BuildContext context, String email, String password) async {
+    user = (await _auth.signInWithEmailAndPassword(
+            email: email, password: password))
+        .user;
+    final User currentUser = _auth.currentUser!;
+    if (user!.uid == currentUser.uid) onSignInSuccess();
   }
 
-  void onSignInSuccess(){
-if(user != null)
-    Get.offAllNamed(AppRouter.home);
+  void onSignInSuccess() {
+    if (user != null) Get.offAllNamed(AppRouter.home);
   }
 }

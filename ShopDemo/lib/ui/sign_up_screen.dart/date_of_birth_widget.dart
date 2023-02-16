@@ -26,7 +26,7 @@ Widget _buildDateOfBirth({bool isRequired = true}) {
                           fontSize: 14,
                           color: Colors.red),
                     )
-                  : SizedBox(),
+                  : SizedBox() as InlineSpan,
             ],
           ),
         ),
